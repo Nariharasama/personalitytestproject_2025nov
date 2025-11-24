@@ -1,3 +1,7 @@
 @import "tailwindcss";
 @tailwind utilities;
 
+@theme {
+    --color-main: #2196f3;
+    --color-lightblack: #545454;
+}
