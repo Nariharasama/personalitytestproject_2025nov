@@ -223,7 +223,7 @@ function getResultId(arr) {
     return Number(maxKey);
 }
 
-function Over({ resultId: number }) {
+function Over({resultId}) {
     const result = results.find(q => q.id === resultId);
     const router = useRouter();
 
