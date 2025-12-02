@@ -1,25 +1,277 @@
+'use client'
+
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import {InfoOutline} from "@mui/icons-material";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
-import {useRouter} from "next/navigation";
+import { questions, results } from "@/app/Test1/questionsdata";
+import LinearProgress from '@mui/material/LinearProgress';
+import { useEffect, useState } from "react";
+import Checkbox from '@mui/material/Checkbox';
+import { useRouter } from "next/navigation";
 
+export default function Test() {
+    const [status, setStatus] = useState("start");
+    const full = 20;
+    const [currentId, setCurrentId] = useState(1);
+    const currentQuestion = questions.find(q => q.id === currentId);
+    const [answers, setAnswers] = useState(Array(full).fill(0));
 
-export default function Home() {
-    const router = useRouter();
     return (
-        <div className={"min-h-screen w-full flex items-center justify-center flex-col gap-4"}>
-            <text className={"font-['Noto_Sans_SC'] font-bold text-[24px] w-full h-[40px] text-center"}>测试标题</text>
-            <text className={"font-['Noto_Sans_SC'] font-normal text-[10px] w-[280px] text-center"}>测试说明文本测试说明文本测试说明文本测试说明文本测试说明文本测试说明文本</text>
-            <text className={"font-['Noto_Sans_SC'] font-thin text-[10px] w-[280px] text-center text-main"}>测试不会采集任何个人数据，所有数据在关闭页面后会即刻注销</text>
+        <div className={"min-h-screen w-full flex items-center justify-center flex-col gap-2"}>
+            {status === "start" &&
+                <StartPage onclick={() => setStatus("answering")} full={full} />
+            }
+
+            {status === "answering" &&
+                <Questions
+                    id={currentId}
+                    full={full}
+                    handleNext={(selected) => {
+                        setAnswers(prev => {
+                            const updated = [...prev];
+                            updated[currentId - 1] = selected;
+                            return updated;
+                        });
+                        setCurrentId(prev => prev + 1);
+                    }}
+                    handlePre={() => setCurrentId(prev => prev - 1)}
+                    handleOver={() => setStatus("over")}
+                    content={currentQuestion}
+                    currentAnswer={answers[currentId - 1]}
+                />
+            }
+
+            {status === "over" &&
+                <Over resultId={getResultId(answers)} />
+            }
+        </div>
+    );
+}
+
+export function StartPage({ onclick, full = 100 }) {
+    return (
+        <div className={"h-full w-full flex items-center justify-center flex-col gap-2"}>
+      <span className={"font-['Noto_Sans_SC'] font-bold text-[24px] w-full h-[30px] text-center"}>
+        情感模式探索测试
+      </span>
+            <span className={"font-['Noto_Sans_SC'] font-normal text-[10px] w-[280px] text-center h-[30px] text-main"}>
+        基于月亮、金星、火星及7宫能量
+      </span>
+            <span className={"font-['Noto_Sans_SC'] font-thin text-[10px] w-[280px] text-center h-[10px]"}>
+        静下心来，凭第一直觉回答问题，不要过多纠结。
+      </span>
+            <span className={"font-['Noto_Sans_SC'] font-thin text-[10px] w-[280px] text-center "}>
+        测试不会采集任何个人数据，所有数据在关闭页面后会即刻注销
+      </span>
+
             <div className={"w-[280px] m-h-[48px] flex items-center outline-main outline-1 p-2 rounded-[2px] gap-2"}>
-                    <InfoOutlinedIcon color={'primary'} />
-                    <div className={"flex flex-col h-[30px] align-middle justify-center"}>
-                        <text className={"font-['Noto_Sans_SC'] font-medium text-[10px] h-[15px]"}>测试说明</text>
-                        <text className={"font-['Noto_Sans_SC'] font-normal text-[10px] h-[14px]"}>测试题数：40 预计用时：5分钟</text>
-                    </div>
+                <InfoOutlinedIcon color={'primary'} />
+                <div className={"flex flex-col h-[30px] align-middle justify-center"}>
+          <span className={"font-['Noto_Sans_SC'] font-medium text-[10px] h-[15px]"}>
+            测试说明
+          </span>
+                    <span className={"font-['Noto_Sans_SC'] font-normal text-[10px] h-[14px]"}>
+            测试题数：{full} 预计用时：{full / 5}分钟
+          </span>
+                </div>
             </div>
-            <Button className={"w-[280px] font-['Noto_Sans_SC'] font-bold text-[16px]"} endIcon={<ChevronRightOutlinedIcon/>} variant={"contained"}>前往测试</Button>
+
+            <Button
+                className={"w-[280px] font-['Noto_Sans_SC'] font-bold text-[16px]"}
+                endIcon={<ChevronRightOutlinedIcon />}
+                variant={"contained"}
+                onClick={onclick}
+            >
+                前往测试
+            </Button>
+        </div>
+    );
+}
+
+function Questions({ id = 0, full = 100, handleNext, handlePre, handleOver, content, currentAnswer }) {
+    const [answerId, setAnswerId] = useState(0);
+
+    useEffect(() => {
+        setAnswerId(currentAnswer);
+    }, [id, currentAnswer]);
+
+    return (
+        <div className={"h-full w-full flex items-center justify-center flex-col gap-1.5"}>
+            <div className={"h-[40px] w-[240px] flex items-center justify-center gap-1"}>
+        <span className={"font-['Noto_Sans_SC'] font-bold text-[10px] w-[60px] text-center"}>
+          第{id}/{full}题
+        </span>
+                <div className={"w-[120px] items-center justify-center"}>
+                    <LinearProgress variant="determinate" value={100 * id / full} />
+                </div>
+                <span className={"font-['Noto_Sans_SC'] font-bold text-[10px] w-[50px] text-center"}>
+          {100 * id / full}%
+        </span>
+            </div>
+
+            <span className={"font-['Noto_Sans_SC'] font-normal text-[10px] text-main"}>
+        在亲密关系中，以下哪种描述最符合你的本能反应或真实想法？
+      </span>
+            <span className={"font-['Noto_Sans_SC'] font-bold text-[12px]"}>
+        {content.question}
+      </span>
+
+            <div className={"w-[280px] flex items-center justify-center flex-col gap-1"}>
+                {content.answers.map((answer) => (
+                    <div
+                        key={answer.value}
+                        className={
+                            "w-[280px] h-[40px] items-center justify-start rounded-sm " +
+                            "border-[1px] border-gray-300 bg-white flex cursor-pointer"
+                        }
+                        onClick={() => {
+                            answerId === answer.value
+                                ? setAnswerId(0)
+                                : setAnswerId(answer.value);
+                        }}
+                    >
+                        <Checkbox checked={answerId === answer.value} />
+                        <span className={"font-['Noto_Sans_SC'] font-normal text-[8px]"}>
+              {answer.label}
+            </span>
+                    </div>
+                ))}
+            </div>
+
+            <div className={'flex w-[280px] items-center justify-center'}>
+                {id > 1 && (
+                    <Button
+                        size="small"
+                        variant={'outlined'}
+                        endIcon={<ChevronRightOutlinedIcon />}
+                        className={"font-['Noto_Sans_SC'] font-bold text-[18px]"}
+                        onClick={() => handlePre()}
+                    >
+                        上一题
+                    </Button>
+                )}
+
+                <div className={"flex-grow"} />
+
+                {id === full ? (
+                    answerId === 0 ? (
+                        <Button
+                            size="small"
+                            variant={'outlined'}
+                            endIcon={<ChevronRightOutlinedIcon />}
+                            className={"font-['Noto_Sans_SC'] font-bold text-[18px]"}
+                            disabled
+                        >
+                            查看结果
+                        </Button>
+                    ) : (
+                        <Button
+                            size="small"
+                            variant={'outlined'}
+                            endIcon={<ChevronRightOutlinedIcon />}
+                            className={"font-['Noto_Sans_SC'] font-bold text-[18px]"}
+                            onClick={() => handleOver()}
+                        >
+                            查看结果
+                        </Button>
+                    )
+                ) : (
+                    answerId === 0 ? (
+                        <Button
+                            size="small"
+                            variant={'outlined'}
+                            endIcon={<ChevronRightOutlinedIcon />}
+                            className={"font-['Noto_Sans_SC'] font-bold text-[18px]"}
+                            disabled
+                        >
+                            下一题
+                        </Button>
+                    ) : (
+                        <Button
+                            size="small"
+                            variant={'outlined'}
+                            endIcon={<ChevronRightOutlinedIcon />}
+                            className={"font-['Noto_Sans_SC'] font-bold text-[18px]"}
+                            onClick={() => handleNext(answerId)}
+                        >
+                            下一题
+                        </Button>
+                    )
+                )}
+            </div>
+
+            <span className={"font-['Noto_Sans_SC'] font-normal text-[8px] "}>
+        请勿关闭或刷新页面以避免丢失当前答题进度
+      </span>
+        </div>
+    );
+}
+
+function getResultId(arr) {
+    const count= { 1: 0, 2: 0, 3: 0, 4: 0 };
+
+    arr.forEach(num => {
+        if (num >= 1 && num <= 4) {
+            count[num]++;
+        }
+    });
+
+    const maxKey = Object
+        .entries(count)
+        .reduce((a, b) => (a[1] > b[1] ? a : b))[0];
+
+    return Number(maxKey);
+}
+
+function Over({ resultId: number }) {
+    const result = results.find(q => q.id === resultId);
+    const router = useRouter();
+
+    if (!result) {
+        return (
+            <div className="h-full w-full flex items-center justify-center">
+        <span className="text-red-500 text-sm">
+          结果生成失败，请返回重新测试。
+        </span>
+            </div>
+        );
+    }
+
+    return (
+        <div className={"h-full w-full flex items-center justify-center flex-col gap-1.5"}>
+      <span className={"font-['Noto_Sans_SC'] font-bold text-[24px] w-full h-[40px] text-center"}>
+        情感模式测试报告
+      </span>
+
+            <span className={"font-['Noto_Sans_SC'] font-bold text-[10px] w-[280px] text-main"}>
+        您的情感模式为{result.resultTitle}
+      </span>
+
+            <span className={"font-['Noto_Sans_SC'] font-normal text-[8px] w-[280px]"}>
+        {result.result[0]}
+      </span>
+            <span className={"font-['Noto_Sans_SC'] font-normal text-[8px] w-[280px]"}>
+        {result.result[1]}
+      </span>
+            <span className={"font-['Noto_Sans_SC'] font-normal text-[8px] w-[280px]"}>
+        {result.result[2]}
+      </span>
+
+            <Button
+                size="small"
+                variant={'text'}
+                endIcon={<ChevronRightOutlinedIcon />}
+                className={"font-['Noto_Sans_SC'] font-bold text-[18px]"}
+                onClick={() => router.push('/')}
+            >
+                其他测试
+            </Button>
+
+            <div className={"h-[20px]"} />
+
+            <span className={"font-['Noto_Sans_SC'] font-normal text-[8px] w-[280px] text-main"}>
+        以上结果由您刚才的作答生成，如需保存请截屏，关闭或刷新页面会丢失结果
+      </span>
         </div>
     );
 }
