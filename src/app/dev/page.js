@@ -19,10 +19,26 @@ export default function Home() {
         name={"情感模式探索测试"}
         subtitle={"基于月亮、金星、火星及7宫能量"}
         text={""}
-        url={"/rhsp2j"}
+        url={"/f3e1i"}
       />
-      <SelectionCard />
-      <SelectionCard />
+      <SelectionCard
+        name={"学习能力剖析测试"}
+        subtitle={"基于星盘中的“水星”及“3宫/9宫”能量"}
+        text={""}
+        url={"/13arn"}
+      />
+      <SelectionCard
+        name={"天赋潜能发现测试"}
+        subtitle={"基于星盘中的“太阳”、“月亮”及“金星”能量"}
+        text={""}
+        url={"/7al3nt"}
+      />
+      <SelectionCard
+        name={"职业方向探索测试"}
+        subtitle={"基于星盘中的“中天”、10宫及6宫能量"}
+        text={""}
+        url={"/c4r3e"}
+      />
       <Divider />
       <span
         className={
