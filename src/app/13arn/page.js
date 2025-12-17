@@ -3,7 +3,7 @@
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Button } from "@mui/material";
 import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
-import { questions, results } from "@/app/rhsp2j/questionsdata";
+import { questions, results } from "@/app/13arn/questionsdata";
 import LinearProgress from "@mui/material/LinearProgress";
 import { useEffect, useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
@@ -62,14 +62,14 @@ export function StartPage({ onclick, full = 100 }) {
           "font-['Noto_Sans_SC'] font-bold text-[24px] w-full h-[30px] text-center"
         }
       >
-        情感模式探索测试
+        学习能力剖析测试
       </span>
       <span
         className={
           "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center text-main"
         }
       >
-        基于月亮、金星、火星及7宫能量
+        基于星盘中的“水星”及“3宫/9宫”能量
       </span>
       <span
         className={
@@ -163,7 +163,7 @@ function Questions({
           "font-['Noto_Sans_SC'] font-normal text-[14px] w-[280px] text-main h-[60px] text-center"
         }
       >
-        在亲密关系中，以下哪种描述最符合你的本能反应或真实想法？
+        请回顾你的学习经历，哪种方式让你感觉最舒服、效率最高？
       </span>
       <span
         className={
@@ -311,7 +311,7 @@ function Over({ resultId }) {
           "font-['Noto_Sans_SC'] font-bold text-[12px] w-[280px] text-center"
         }
       >
-        您的情感模式为:
+        您的学习模式为:
       </span>
       <span
         className={
@@ -322,17 +322,23 @@ function Over({ resultId }) {
       </span>
 
       <span
-        className={"font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px]"}
+        className={
+          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center"
+        }
       >
         {result.result[0]}
       </span>
       <span
-        className={"font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px]"}
+        className={
+          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center"
+        }
       >
         {result.result[1]}
       </span>
       <span
-        className={"font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px]"}
+        className={
+          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center"
+        }
       >
         {result.result[2]}
       </span>
