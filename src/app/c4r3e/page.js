@@ -91,10 +91,58 @@ export function StartPage({ onclick, full = 100 }) {
         </span>
         <span
           className={
-            "font-['Noto_Sans_SC'] font-normal text-[8px] text-center w-full text-lightblack"
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
           }
         >
-          透过星盘的方式，帮你剖析职业适配度，明晰未来职场前行方向。
+          解锁星盘奥秘，精准定位职业方向
+          <br />
+          为你的职场选择提供参考。
+        </span>
+      </div>
+      <div
+        className={
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <ExploreOutlinedIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          自我探索
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          依托星盘解析，帮你挖掘职业潜能
+          <br />
+          助你找到适配的发展方向
+        </span>
+      </div>
+      <div
+        className={
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <ArrowOutwardIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          实用导向
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          透过星盘的方式，帮你剖析职业适配度
+          <br />
+          明晰未来职场前行方向
         </span>
       </div>
       <div
