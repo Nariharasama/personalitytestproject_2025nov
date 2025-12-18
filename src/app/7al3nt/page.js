@@ -8,6 +8,10 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { useEffect, useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { useRouter } from "next/navigation";
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 
 export default function Test() {
   const [status, setStatus] = useState("start");
@@ -54,9 +58,10 @@ export function StartPage({ onclick, full = 100 }) {
   return (
     <div
       className={
-        "h-full w-full flex items-center justify-center flex-col gap-2"
+        "h-full w-full flex items-center justify-center flex-col gap-1"
       }
     >
+      <StarOutlinedIcon fontSize="large" color={"primary"} />
       <span
         className={
           "font-['Noto_Sans_SC'] font-bold text-[24px] w-full h-[30px] text-center"
@@ -66,18 +71,81 @@ export function StartPage({ onclick, full = 100 }) {
       </span>
       <span
         className={
-          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center text-main"
+          "font-['Noto_Sans_SC'] font-bold text-[16px] w-[280px] text-center text-main"
         }
       >
-        基于星盘中的“太阳”、“月亮”及“金星”能量
+        Discover Your Talent
       </span>
-      <span
+      <div
         className={
-          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center h-[20px]"
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
         }
       >
-        静下心来，凭第一直觉回答问题，不要过多纠结。
-      </span>
+        <BarChartOutlinedIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          专业解析
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          解码星盘日月与宫位密码
+          <br />
+          精准定位核心天赋与潜能方向
+        </span>
+      </div>
+      <div
+        className={
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <ExploreOutlinedIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          自我探索
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          透过星盘自测，挖掘隐藏才华
+          <br />
+          看见自己独特的能力与闪光点
+        </span>
+      </div>
+      <div
+        className={
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <ArrowOutwardIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          实用导向
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          星盘揭秘天赋潜能
+          <br />
+          为你找到值得深耕的优势领域与发展路径
+        </span>
+      </div>
+
       <div
         className={
           "w-[280px] m-h-[64px] flex items-center outline-main outline-1 p-2 rounded-[2px] gap-2"

@@ -8,6 +8,10 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { useEffect, useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { useRouter } from "next/navigation";
+import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 export default function Test() {
   const [status, setStatus] = useState("start");
@@ -54,9 +58,10 @@ export function StartPage({ onclick, full = 100 }) {
   return (
     <div
       className={
-        "h-full w-full flex items-center justify-center flex-col gap-2"
+        "h-full w-full flex items-center justify-center flex-col gap-1"
       }
     >
+      <StarOutlinedIcon fontSize="large" color={"primary"} />
       <span
         className={
           "font-['Noto_Sans_SC'] font-bold text-[24px] w-full h-[30px] text-center"
@@ -66,18 +71,32 @@ export function StartPage({ onclick, full = 100 }) {
       </span>
       <span
         className={
-          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center text-main"
+          "font-['Noto_Sans_SC'] font-bold text-[16px] w-[280px] text-center text-main"
         }
       >
-        基于星盘中的“中天”、10宫及6宫能量
+        Career Ability Exploration
       </span>
-      <span
+      <div
         className={
-          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center h-[20px]"
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
         }
       >
-        静下心来，凭第一直觉回答问题，不要过多纠结。
-      </span>
+        <BarChartOutlinedIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          专业解析
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[8px] text-center w-full text-lightblack"
+          }
+        >
+          透过星盘的方式，帮你剖析职业适配度，明晰未来职场前行方向。
+        </span>
+      </div>
       <div
         className={
           "w-[280px] m-h-[64px] flex items-center outline-main outline-1 p-2 rounded-[2px] gap-2"

@@ -8,6 +8,10 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { useEffect, useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { useRouter } from "next/navigation";
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 
 export default function Test() {
   const [status, setStatus] = useState("start");
@@ -54,9 +58,10 @@ export function StartPage({ onclick, full = 100 }) {
   return (
     <div
       className={
-        "h-full w-full flex items-center justify-center flex-col gap-2"
+        "h-full w-full flex items-center justify-center flex-col gap-1"
       }
     >
+      <StarOutlinedIcon fontSize={"large"} color={"primary"} />
       <span
         className={
           "font-['Noto_Sans_SC'] font-bold text-[24px] w-full h-[30px] text-center"
@@ -64,20 +69,85 @@ export function StartPage({ onclick, full = 100 }) {
       >
         情感模式探索测试
       </span>
+
       <span
         className={
-          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center text-main"
+          "font-['Noto_Sans_SC'] font-bold text-[16px] w-[280px] text-center text-main"
         }
       >
-        基于月亮、金星、火星及7宫能量
+        Emotional Pattern Exploration
       </span>
-      <span
+      <div className={"w-[280px] flex gap-0.5 flex-col"}></div>
+      <div
         className={
-          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center h-[20px]"
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
         }
       >
-        静下心来，凭第一直觉回答问题，不要过多纠结。
-      </span>
+        <BarChartOutlinedIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          专业解析
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          解码星盘金星、月亮密码
+          <br />
+          洞悉你的恋爱惯性与亲密关系模式
+        </span>
+      </div>
+      <div
+        className={
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <ExploreOutlinedIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          自我探索
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          透过星盘的方式，读懂情感需求与择偶偏好
+          <br />
+          看见真实的自己
+        </span>
+      </div>
+      <div
+        className={
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <ArrowOutwardIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          实用导向
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          星盘揭秘你的情感模式
+          <br />
+          帮你找到关系困境的答案与方向
+        </span>
+      </div>
+
       <div
         className={
           "w-[280px] m-h-[64px] flex items-center outline-main outline-1 p-2 rounded-[2px] gap-2"

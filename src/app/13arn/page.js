@@ -8,6 +8,10 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { useEffect, useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { useRouter } from "next/navigation";
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
+import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 export default function Test() {
   const [status, setStatus] = useState("start");
@@ -57,6 +61,7 @@ export function StartPage({ onclick, full = 100 }) {
         "h-full w-full flex items-center justify-center flex-col gap-2"
       }
     >
+      <StarOutlinedIcon fontSize="large" color={"primary"} />
       <span
         className={
           "font-['Noto_Sans_SC'] font-bold text-[24px] w-full h-[30px] text-center"
@@ -66,21 +71,84 @@ export function StartPage({ onclick, full = 100 }) {
       </span>
       <span
         className={
-          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center text-main"
+          "font-['Noto_Sans_SC'] text-[16px] w-[280px] text-center text-main font-bold"
         }
       >
-        基于星盘中的“水星”及“3宫/9宫”能量
-      </span>
-      <span
-        className={
-          "font-['Noto_Sans_SC'] font-normal text-[12px] w-[280px] text-center h-[20px]"
-        }
-      >
-        静下心来，凭第一直觉回答问题，不要过多纠结。
+        Learning Model Exploration
       </span>
       <div
         className={
-          "w-[280px] m-h-[64px] flex items-center outline-main outline-1 p-2 rounded-[2px] gap-2"
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <BarChartOutlinedIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          专业解析
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          解码水星与3、9宫密码
+          <br />
+          精准定位学习天赋与高效学习模式
+        </span>
+      </div>
+      <div
+        className={
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <ExploreOutlinedIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          自我探索
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          星盘自测解锁学习优势，洞悉思维特点，
+          <br />
+          发现专属高效学习路径
+        </span>
+      </div>
+      <div
+        className={
+          "w-[280px] items-center justify-center flex-col p-[10px] shadow-lg flex rounded-[4px] gap-1 m-[4px] hover:shadow-xl"
+        }
+      >
+        <ArrowOutwardIcon color={"primary"} />
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[12px] text-center w-full"
+          }
+        >
+          实用导向
+        </span>
+        <span
+          className={
+            "font-['Noto_Sans_SC'] font-normal text-[10px] text-center w-full text-lightblack"
+          }
+        >
+          透过星盘看清学习潜能，找到适配方法
+          <br />
+          助力学业与自我提升
+        </span>
+      </div>
+
+      <div
+        className={
+          "w-[280px] m-h-[64px] flex items-center outline-main outline-1 p-2 rounded-[2px] gap-1"
         }
       >
         <InfoOutlinedIcon color={"primary"} />
